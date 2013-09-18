@@ -1,10 +1,9 @@
 PyDom
 ====
 
-PyDom is a python script for checking domain availability 
-It is intended to be a unix shell script in the future.
+PyDom is a python script for checking domain availability. It is intended to be a Unix shell script in the future.
 
-for now to enable output coloring on OSX you need to have termcolor package <br>
+For now, to enable output coloring on OSX, you need to have termcolor package <br>
 
 
 ### Usage

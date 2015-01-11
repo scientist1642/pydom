@@ -4,12 +4,15 @@ import urllib
 import urllib2
 import json
 import sys
-import termcolor
-
-YES_COLOR = 'green'
-NOT_COLOR = 'red'
-MAYBE_COLOR = 'yellow'
-NON_COLOR = 'white'
+try:
+    import termcolor
+    COLOR_ENABLED = True
+    YES_COLOR = 'green'
+    NOT_COLOR = 'red'
+    MAYBE_COLOR = 'yellow'
+    NON_COLOR = 'white'
+except ImportError:
+    COLOR_ENABLED = False
 
 def domainr_search_json(domainname = 'www.geolymp.org'):
     requesturl = 'http://www.domai.nr/api/json/search?q='
@@ -36,8 +39,11 @@ def main():
     for item in domainr_objs['results']:
         domain = item['domain']
         availability = item['availability']
-        print termcolor.colored(domain + ' ' + availability, 
-                choose_color(availability))
+        text = domain + ' ' + availability
+        if COLOR_ENABLED:
+            print termcolor.colored(text, choose_color(availability))
+        else:
+            print text
 
 if __name__ == '__main__':
     main()
